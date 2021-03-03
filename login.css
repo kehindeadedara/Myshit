@@ -1,0 +1,42 @@
+.body {
+  margin-top: 20%;
+  background-color: lightskyblue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.buttons {
+  background-color: lightskyblue;
+  color: black;
+  border: 2px solid #0e26af;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 20px;
+  border-radius: 5%;
+}
+a {
+  text-decoration: none;
+}
+a:link {
+  background-color: lightskyblue;
+}
+a:visited {
+  background-color: lightskyblue;
+}
+a:hover {
+  background-color: dodgerblue;
+}
+a:active {
+  background-color: gray;
+}
