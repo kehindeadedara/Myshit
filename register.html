@@ -6,6 +6,7 @@
     <title>Register!</title>
     <link rel="shortcut icon" href="favi/lock.png" type="image/x-icon" />
     <link rel="stylesheet" href="register.css" />
+    <script type="text/javascript" src="/Sprint1YoussefM/SignUpIn.js"></script>
   </head>
 
   <body class="body">
@@ -26,7 +27,35 @@
           <input type="text" id="cemail" name="cemail" value="" /><br />
           <label for="uname">Username:</label><br />
           <input type="text" id="uname" name="uname" value="" /><br />
-          <br />
+          <aside>
+            Choose Picture to Generate Key
+            <div id="pictureCheck">
+              <input type="radio" name="pic" id="pikachu" />
+              <label for="pic"
+                ><img src="/Sprint1YoussefM/SuprisedPikachu.jpg" alt="Suprised"
+              /></label>
+
+              <input type="radio" name="pic" id="gengar" />
+              <label for="pic"
+                ><img src="/Sprint1YoussefM/SadGengar.jpg" alt="Sad"
+              /></label>
+
+              <input type="radio" name="pic" id="evee" />
+              <label for="pic"
+                ><img src="/Sprint1YoussefM/AngryEvee.png" alt="Angry"
+              /></label>
+            </div>
+
+            <br />
+            <br />
+          </aside>
+          <label>
+            <input type="checkbox" name="terms" /> Please agree to our
+            <a href="#service">Terms of Service</a> and
+            <a href="#policy">Privacy Policy</a>
+          </label>
+
+          <br /><br />
           <input type="submit" value="Submit" />
         </form>
       </div>

@@ -11,6 +11,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .buttons {
   background-color: lightskyblue;
@@ -23,7 +27,11 @@
   font-size: 16px;
   border-radius: 5%;
 }
-
+img {
+  width: 7vw;
+  height: 7vw;
+  padding: 1vw;
+}
 a {
   text-decoration: none;
 }
@@ -41,4 +49,10 @@ a:hover {
 
 a:active {
   background-color: gray;
+}
+
+.divtable {
+  width: 50%;
+  height: 50%;
+  border: 2px solid black;
 }

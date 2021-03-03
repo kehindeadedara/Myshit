@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Sign up to TITLE</title>
-        <link rel="stylesheet" type="text/css" href="SignUpIn.css" />
-        <script type="text/javascript" src="SignUpIn.js"></script>
-    </head>
-    <body>
-        <form method="post" target="#" onsubmit="return validate()">
-        <h2>Sign UP! </h2>
-        <p>The form below will allow you to create a new account if you don't have one already.</p>
-        
-      	Name<br>
-      	<input type="text" name="name"><br>
-        Email<br>
-	<input type="text" name="email"><br>
-        Retype email<br>
-      	<input type="text" name="retype_email"><br>
-		
+  <head>
+    <title>Sign up to TITLE</title>
+    <link rel="stylesheet" type="text/css" href="SignUpIn.css" />
+    <script type="text/javascript" src="SignUpIn.js"></script>
+  </head>
+  <body>
+    <form method="post" target="#" onsubmit="return validate()">
+      <h2>Sign UP!</h2>
+      <p>
+        The form below will allow you to create a new account if you don't have
+        one already.
+      </p>
 
+      Name<br />
+      <input type="text" name="name" /><br />
+      Email<br />
+      <input type="text" name="email" /><br />
+      Retype email<br />
+      <input type="text" name="retype_email" /><br />
 
+      <aside>
+        <div id="pictureCheck">
+          <input type="radio" name="pic" id="pikachu" />
+          <label for="pic"
+            ><img src="SuprisedPikachu.jpg" alt="Suprised"
+          /></label>
 
-	<aside>
-		<div id="pictureCheck">
-    <input type="radio" name="pic" id="pikachu" />
-        <label for="pic"><img src="SuprisedPikachu.jpg" alt="Suprised" /></label>
+          <input type="radio" name="pic" id="gengar" />
+          <label for="pic"><img src="SadGengar.jpg" alt="Sad" /></label>
 
-    <input type="radio" name="pic" id="gengar" />
-        <label for="pic"><img src="SadGengar.jpg" alt="Sad" /></label>
-		
-	 <input type="radio" name="pic" id="evee" />
-        <label for="pic"><img src="AngryEvee.png" alt="Angry" /></label>	
-
-		</div>
-		Choose Picture to Generate Key 
-		<br>
-		<br>
-	</aside>
-		 
-        <label>
-          <input type="checkbox" name="terms"> Please agree to our 
-           <a href="#service">Terms of Service</a> and <a href="#policy">Privacy Policy</a>
-        </label>
-            
-      	<div class="button">
-          <input type="submit" class="button" value="Submit!">
+          <input type="radio" name="pic" id="evee" />
+          <label for="pic"><img src="AngryEvee.png" alt="Angry" /></label>
         </div>
-        
-	</form>
-</body>
+        Choose Picture to Generate Key
+        <br />
+        <br />
+      </aside>
+
+      <label>
+        <input type="checkbox" name="terms" /> Please agree to our
+        <a href="#service">Terms of Service</a> and
+        <a href="#policy">Privacy Policy</a>
+      </label>
+
+      <div class="button">
+        <input type="submit" class="button" value="Submit!" />
+      </div>
+    </form>
+  </body>
 </html>
