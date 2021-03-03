@@ -8,11 +8,23 @@
     <link rel="stylesheet" href="login.css" />
   </head>
   <body class="body">
+    <div class="navbar">
+      <a class="buttons" href="home.html">Home</a>
+    </div>
     <div class="main">
-      <div><h1>Enter User Information</h1></div>
+      <div><h1>Enter Credentials!</h1></div>
       <div style="display: flex; justify-content: center">
-        <a class="buttons" href="register.html">Register</a>
-        <a class="buttons" href="login.html">Login</a>
+        <form action="/action_page.php">
+          <label for="fname">First name:</label><br />
+          <input type="text" id="fname" name="fname" value="" /><br />
+          <label for="lname">Last name:</label><br />
+          <input type="text" id="lname" name="lname" value="" /><br />
+          <label for="uname">Username:</label><br />
+          <input type="text" id="email" name="email" value="" /><br />
+          <label for="lname">Confirm Email:</label><br />
+          <input type="text" id="cemail" name="cemail" value="" /><br /><br />
+          <input type="submit" value="Submit" />
+        </form>
       </div>
     </div>
   </body>
