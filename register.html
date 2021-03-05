@@ -11,44 +11,100 @@
 
   <body class="body">
     <div class="navbar">
-      <a class="buttons" href="home.html">Home</a>
+      <div style="margin-left: 1%; float: left">
+        <a class="buttons" href="home.html">Home</a>
+      </div>
+      <div style="width: 90%; margin-right: 7%; text-align: center">
+        <h1>Create an Account!</h1>
+      </div>
     </div>
     <div class="main">
-      <div><h1>Create an Account!</h1></div>
       <div style="display: flex; justify-content: center">
         <form action="/action_page.php">
-          <label for="fname">First name:</label><br />
-          <input type="text" id="fname" name="fname" value="" /><br />
-          <label for="lname">Last name:</label><br />
-          <input type="text" id="lname" name="lname" value="" /><br />
-          <label for="email">Email:</label><br />
-          <input type="text" id="email" name="email" value="" /><br />
-          <label for="cemail">Confirm Email:</label><br />
-          <input type="text" id="cemail" name="cemail" value="" /><br />
-          <label for="uname">Username:</label><br />
-          <input type="text" id="uname" name="uname" value="" /><br />
-          <aside>
-            Choose Picture to Generate Key
-            <div id="pictureCheck">
-              <input type="radio" name="pic" id="pikachu" />
-              <label for="pic"
-                ><img src="/Sprint1YoussefM/SuprisedPikachu.jpg" alt="Suprised"
-              /></label>
-
-              <input type="radio" name="pic" id="gengar" />
-              <label for="pic"
-                ><img src="/Sprint1YoussefM/SadGengar.jpg" alt="Sad"
-              /></label>
-
-              <input type="radio" name="pic" id="evee" />
-              <label for="pic"
-                ><img src="/Sprint1YoussefM/AngryEvee.png" alt="Angry"
-              /></label>
+          <div
+            style="display: flex; flex-direction: row; justify-content: center"
+          >
+            <div class="fitb-section">
+              <br />
+              <label for="fname">First name:</label>
+              <input type="text" id="fname" name="fname" value="" /><br />
+              <label for="email">Email:</label>
+              <input type="text" id="email" name="email" value="" /><br />
+              <label for="uname">Username:</label>
+              <input type="text" id="uname" name="uname" value="" /><br />
             </div>
+            <div class="fitb-section">
+              <label for="lname">Last name:</label>
+              <input type="text" id="lname" name="lname" value="" /><br />
+              <label for="cemail">Confirm Email:</label>
+              <input type="text" id="cemail" name="cemail" value="" /><br />
+              <label for="pics">Choose a picture:</label>
+              <select name="pics" id="pics" form="picsform">
+                <option value="mtns">Mountains</option>
+                <option value="field">Field</option>
+                <option value="beach">Beach</option>
+              </select>
+            </div>
+            <br />
+          </div>
+          <br />
+          <div style="display: flex; justify-content: center">
+            <div class="divtable" id="table" style="display: table">
+              <div id="row1" style="display: table-row">
+                <div
+                  id="cell11"
+                  class="cell1"
+                  style="display: table-cell"
+                ></div>
+                <div
+                  id="cell12"
+                  class="cell2"
+                  style="display: table-cell"
+                ></div>
+                <div
+                  id="cell13"
+                  class="cell3"
+                  style="display: table-cell"
+                ></div>
+              </div>
+              <div id="row2" style="display: table-row">
+                <div
+                  id="cell21"
+                  class="cell4"
+                  style="display: table-cell"
+                ></div>
+                <div
+                  id="cell22"
+                  class="cell5"
+                  style="display: table-cell"
+                ></div>
+                <div
+                  id="cell23"
+                  class="cell6"
+                  style="display: table-cell"
+                ></div>
+              </div>
+              <div id="row3" style="display: table-row">
+                <div
+                  id="cell31"
+                  class="cell7"
+                  style="display: table-cell"
+                ></div>
+                <div
+                  id="cell32"
+                  class="cell8"
+                  style="display: table-cell"
+                ></div>
+                <div
+                  id="cell33"
+                  class="cell9"
+                  style="display: table-cell"
+                ></div>
+              </div>
+            </div>
+          </div>
 
-            <br />
-            <br />
-          </aside>
+          <br /><br />
           <label>
             <input type="checkbox" name="terms" /> Please agree to our
             <a href="#service">Terms of Service</a> and
@@ -56,7 +112,9 @@
           </label>
 
           <br /><br />
-          <input type="submit" value="Submit" />
+          <div style="display: flex; justify-content: center">
+            <input type="submit" value="Submit" />
+          </div>
         </form>
       </div>
     </div>

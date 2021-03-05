@@ -3,105 +3,104 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register!</title>
+    <title>Login!</title>
     <link rel="shortcut icon" href="favi/lock.png" type="image/x-icon" />
-    <link rel="stylesheet" href="register.css" />
+    <link rel="stylesheet" href="login.css" />
     <script type="text/javascript" src="/Sprint1YoussefM/SignUpIn.js"></script>
   </head>
 
   <body class="body">
     <div class="navbar">
-      <a class="buttons" href="home.html">Home</a>
+      <div style="margin-left: 1%; float: left">
+        <a class="buttons" href="home.html">Home</a>
+      </div>
+      <div style="width: 100%; margin-left: 5.25%; text-align: center">
+        <h1>Enter Credentials!</h1>
+      </div>
+      <div style="margin-right: 1%; float: right">
+        <a class="buttons" href="home.html">Forgot password?</a>
+      </div>
     </div>
     <div class="main">
-      <div><h1>Enter Credentials!</h1></div>
       <div style="display: flex; justify-content: center">
         <form action="/action_page.php">
-          <label for="uname">Username:</label><br />
-          <input type="text" id="uname" name="uname" value="" /><br />
-          <aside>
-            Picture:
-            <div id="pictureCheck">
-              <input type="radio" name="pic" id="pikachu" />
-              <label for="pic"
-                ><img src="/Sprint1YoussefM/SuprisedPikachu.jpg" alt="Suprised"
-              /></label>
-
-              <input type="radio" name="pic" id="gengar" />
-              <label for="pic"
-                ><img src="/Sprint1YoussefM/SadGengar.jpg" alt="Sad"
-              /></label>
-
-              <input type="radio" name="pic" id="evee" />
-              <label for="pic"
-                ><img src="/Sprint1YoussefM/AngryEvee.png" alt="Angry"
-              /></label>
+          <div
+            style="display: flex; flex-direction: row; justify-content: center"
+          >
+            <div class="fitb-section">
+              <label for="uname">Username:</label>
+              <input type="text" id="uname" name="uname" value="" />
             </div>
-
-            <br />
-            <br />
-          </aside>
-
+            <div class="fitb-section">
+              <label for="pics">Choose a picture:</label>
+              <select name="pics" id="pics" form="picsform">
+                <option value="mtns">Mountains</option>
+                <option value="field">Field</option>
+                <option value="beach">Beach</option>
+              </select>
+            </div>
+          </div>
           <br /><br />
-          <div class="divtable" id="table" style="display: table">
-            <div id="row1" style="display: table-row">
-              <div id="cell11" class="tile1" style="display: table-cell">
-                test
+          <div style="display: flex; justify-content: center">
+            <div class="divtable" id="table" style="display: table">
+              <div id="row1" style="display: table-row">
+                <div
+                  id="cell11"
+                  class="cell1"
+                  style="display: table-cell"
+                ></div>
+                <div
+                  id="cell12"
+                  class="cell2"
+                  style="display: table-cell"
+                ></div>
+                <div
+                  id="cell13"
+                  class="cell3"
+                  style="display: table-cell"
+                ></div>
               </div>
-              <div id="cell12" class="tile2" style="display: table-cell">
-                test
+              <div id="row2" style="display: table-row">
+                <div
+                  id="cell21"
+                  class="cell4"
+                  style="display: table-cell"
+                ></div>
+                <div
+                  id="cell22"
+                  class="cell5"
+                  style="display: table-cell"
+                ></div>
+                <div
+                  id="cell23"
+                  class="cell6"
+                  style="display: table-cell"
+                ></div>
               </div>
-              <div id="cell13" class="tile3" style="display: table-cell">
-                test
-              </div>
-              <div id="cell14" class="tile4" style="display: table-cell">
-                test
-              </div>
-            </div>
-            <div id="row2" style="display: table-row">
-              <div id="cell21" class="tile5" style="display: table-cell">
-                test
-              </div>
-              <div id="cell22" class="tile6" style="display: table-cell">
-                test
-              </div>
-              <div id="cell23" class="tile7" style="display: table-cell">
-                test
-              </div>
-              <div id="cell24" class="tile8" style="display: table-cell">
-                test
-              </div>
-            </div>
-            <div id="row3" style="display: table-row">
-              <div id="cell31" class="tile9" style="display: table-cell">
-                test
-              </div>
-              <div id="cell32" class="tile10" style="display: table-cell">
-                test
-              </div>
-              <div id="cell33" class="tile11" style="display: table-cell">
-                test
-              </div>
-              <div id="cell34" class="tile12" style="display: table-cell">
-                test
-              </div>
-            </div>
-            <div id="row4" style="display: table-row">
-              <div id="cell41" class="tile13" style="display: table-cell">
-                test
-              </div>
-              <div id="cell42" class="tile14" style="display: table-cell">
-                test
-              </div>
-              <div id="cell43" class="tile15" style="display: table-cell">
-                test
-              </div>
-              <div id="cell44" class="tile16" style="display: table-cell">
-                test
+              <div id="row3" style="display: table-row">
+                <div
+                  id="cell31"
+                  class="cell7"
+                  style="display: table-cell"
+                ></div>
+                <div
+                  id="cell32"
+                  class="cell8"
+                  style="display: table-cell"
+                ></div>
+                <div
+                  id="cell33"
+                  class="cell9"
+                  style="display: table-cell"
+                ></div>
               </div>
             </div>
           </div>
-          <input type="submit" value="Submit" />
+          <br />
+          <br />
+          <div style="display: flex; justify-content: center">
+            <input type="submit" value="Submit" />
+          </div>
         </form>
       </div>
     </div>
