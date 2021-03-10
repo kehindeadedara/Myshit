@@ -1,4 +1,6 @@
 var pass = "";
+var maxmove = 10;
+var current = 0;
 function swapTiles(cell1,cell2) {
     var temp = document.getElementById(cell1).className;
     document.getElementById(cell1).className = document.getElementById(cell2).className;
@@ -8,44 +10,50 @@ function swapTiles(cell1,cell2) {
   function clickTile(row,col) {
     var cell = document.getElementById("cell"+row+col);
     var tile = cell.className;
-    
-    if (tile!="cell9") { 
-         //Checking if white tile on the right
-         if (col<3) {
-           if ( document.getElementById("cell"+row+(col+1)).className=="cell9") {
-            pass += row.toString() + col.toString();
-            swapTiles("cell"+row+col,"cell"+row+(col+1));
-            console.log(pass);
-            return;
-           }
-         }
-         //Checking if white tile on the left
-         if (col>1) {
-           if ( document.getElementById("cell"+row+(col-1)).className=="cell9") {
-            pass += row.toString() + col.toString();
-            swapTiles("cell"+row+col,"cell"+row+(col-1));
-            console.log(pass);
-            return;
-           }
-         }
-           //Checking if white tile is above
-         if (row>1) {
-           if ( document.getElementById("cell"+(row-1)+col).className=="cell9") {
-            pass += row.toString() + col.toString();
-            swapTiles("cell"+row+col,"cell"+(row-1)+col);
-            console.log(pass);
-            return;
-           }
-         }
-         //Checking if white tile is below
-         if (row<3) {
-           if ( document.getElementById("cell"+(row+1)+col).className=="cell9") {
-            pass += row.toString() + col.toString();
-            swapTiles("cell"+row+col,"cell"+(row+1)+col);
-            console.log(pass);
-            return;
-           }
-         } 
+    if (current < maxmove){
+        if (tile!="cell9") { 
+            //Checking if white tile on the right
+            if (col<3) {
+                if ( document.getElementById("cell"+row+(col+1)).className=="cell9") {
+                    pass += row.toString() + col.toString();
+                    swapTiles("cell"+row+col,"cell"+row+(col+1));
+                    current += 1;
+                    console.log(pass);
+                    return;
+                }
+            }
+            //Checking if white tile on the left
+            if (col>1) {
+                if ( document.getElementById("cell"+row+(col-1)).className=="cell9") {
+                    pass += row.toString() + col.toString();
+                    swapTiles("cell"+row+col,"cell"+row+(col-1));
+                    current += 1;
+                    console.log(pass);
+                    return;
+                }
+            }
+            //Checking if white tile is above
+            if (row>1) {
+                if ( document.getElementById("cell"+(row-1)+col).className=="cell9") {
+                    pass += row.toString() + col.toString();
+                    swapTiles("cell"+row+col,"cell"+(row-1)+col);
+                    current += 1;
+                    console.log(pass);
+                    return;
+                }
+            }
+            //Checking if white tile is below
+            if (row<3) {
+                if ( document.getElementById("cell"+(row+1)+col).className=="cell9") {
+                    pass += row.toString() + col.toString();
+                    swapTiles("cell"+row+col,"cell"+(row+1)+col);
+                    current += 1;
+                    console.log(pass);
+                    return;
+                }
+            } 
+        }
     }
     
-  }
+    
+}
