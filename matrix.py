@@ -11,23 +11,16 @@ i2c = busio.I2C(board.SCL, board.SDA)
 #color3 = matrix.Matrix8x8x2(i2c, 0x70)
 #color4 = matrix.Matrix8x8x2(i2c, 0x71)
 #color[6,4] = 1
+
+
 def perform(color):
-   color[2,2] = 1
-   color[2,3] = 1
-   color[2,4] = 1
-   color[2,5] = 1
-   color[3,2] = 1
-   color[3,3] = 1
-   color[3,4] = 1
-   color[3,5] = 1
-   color[4,2] = 1
-   color[4,3] = 1
-   color[4,4] = 1
-   color[4,5] = 1
-   color[5,2] = 1
-   color[5,3] = 1
-   color[5,4] = 1
-   color[5,5] = 1
+    for i in range(1,9):
+        for j in range(1,9):
+              if i%2 or j%2== 0:
+                  pass
+              else:
+                  color[i,j] = 1
+
 def color_function(color1,color2, colo3, color4):
     try:
         while True:
