@@ -6,7 +6,8 @@
     <title>Register!</title>
     <link rel="shortcut icon" href="favi/lock.png" type="image/x-icon" />
     <link rel="stylesheet" href="register.css" />
-    <script type="text/javascript" src="/Sprint1YoussefM/SignUpIn.js"></script>
+    <!-- <script type="text/javascript" src="/Sprint1YoussefM/SignUpIn.js"></script> -->
+    <script type="application/javascript" src="slide.js"></script>
   </head>
 
   <body class="body">
@@ -20,29 +21,29 @@
     </div>
     <div class="main">
       <div style="display: flex; justify-content: center">
-        <form action="/action_page.php">
+        <form action="register-submit.php" method="POST">
           <div
             style="display: flex; flex-direction: row; justify-content: center"
           >
             <div class="fitb-section">
               <br />
               <label for="fname">First name:</label>
-              <input type="text" id="fname" name="fname" value="" /><br />
+              <input type="text" id="fname" name="fname" value="" maxlength="20" /><br />
               <label for="email">Email:</label>
-              <input type="text" id="email" name="email" value="" /><br />
+              <input type="text" id="email" name="email" value="" maxlength="40" /><br />
               <label for="uname">Username:</label>
-              <input type="text" id="uname" name="uname" value="" /><br />
+              <input type="text" id="uname" name="uname" value="" maxlength="16" /><br />
             </div>
             <div class="fitb-section">
               <label for="lname">Last name:</label>
-              <input type="text" id="lname" name="lname" value="" /><br />
+              <input type="text" id="lname" name="lname" value="" maxlength="20" /><br />
               <label for="cemail">Confirm Email:</label>
-              <input type="text" id="cemail" name="cemail" value="" /><br />
+              <input type="text" id="cemail" name="cemail" value="" maxlength="40" /><br />
               <label for="pics">Choose a picture:</label>
-              <select name="pics" id="pics" form="picsform">
-                <option value="mtns">Mountains</option>
-                <option value="field">Field</option>
-                <option value="beach">Beach</option>
+              <select name="pics" id="pics" onchange="setImage(this.value)">
+                <option value="1" >Mountains</option>
+                <option value="2" >Field</option>
+                <option value="3" >Beach</option>
               </select>
             </div>
             <br />
@@ -53,58 +54,66 @@
               <div id="row1" style="display: table-row">
                 <div
                   id="cell11"
-                  class="cell1"
+                  class="cell1 cellimage1"
                   style="display: table-cell"
+                  onClick="clickTile(1,1)"
                 ></div>
                 <div
                   id="cell12"
-                  class="cell2"
+                  class="cell2 cellimage1"
                   style="display: table-cell"
+                  onClick="clickTile(1,2)"
                 ></div>
                 <div
                   id="cell13"
-                  class="cell3"
+                  class="cell3 cellimage1"
                   style="display: table-cell"
+                  onClick="clickTile(1,3)"
                 ></div>
               </div>
               <div id="row2" style="display: table-row">
                 <div
                   id="cell21"
-                  class="cell4"
+                  class="cell4 cellimage1"
                   style="display: table-cell"
+                  onClick="clickTile(2,1)"
                 ></div>
                 <div
                   id="cell22"
-                  class="cell5"
+                  class="cell5 cellimage1"
                   style="display: table-cell"
+                  onClick="clickTile(2,2)"
                 ></div>
                 <div
                   id="cell23"
-                  class="cell6"
+                  class="cell6 cellimage1"
                   style="display: table-cell"
+                  onClick="clickTile(2,3)"
                 ></div>
               </div>
               <div id="row3" style="display: table-row">
                 <div
                   id="cell31"
-                  class="cell7"
+                  class="cell7 cellimage1"
                   style="display: table-cell"
+                  onClick="clickTile(3,1)"
                 ></div>
                 <div
                   id="cell32"
-                  class="cell8"
+                  class="cell8 cellimage1"
                   style="display: table-cell"
+                  onClick="clickTile(3,2)"
                 ></div>
                 <div
                   id="cell33"
-                  class="cell9"
+                  class="cell9 cellimage1"
                   style="display: table-cell"
+                  onClick="clickTile(3,3)"
                 ></div>
               </div>
             </div>
           </div>
-
-          <br /><br />
+          <br />
           <label>
             <input type="checkbox" name="terms" /> Please agree to our
             <a href="#service">Terms of Service</a> and
@@ -113,7 +122,7 @@
 
           <br /><br />
           <div style="display: flex; justify-content: center">
-            <input type="submit" value="Submit" />
+            <input onclick="setCookie()" type="submit" value="Submit" />
           </div>
         </form>
       </div>

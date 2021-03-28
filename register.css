@@ -1,6 +1,7 @@
 .body {
   background-color: lightskyblue;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: small;
 }
 .navbar {
   display: flex;
@@ -72,8 +73,18 @@ a:active {
   width: 106px; /* .33 of the width&height of the picture */
   height: 106px;
   border: 1px solid white;
-  background: url("./img/mtns.jpg");
+ 
   cursor: pointer;
+}
+
+.cellimage1{
+  background: url("./img/mtns.jpg");
+}
+.cellimage2{
+  background: url("./img/field.jpg");
+}
+.cellimage3{
+  background: url("./img/beach.jpg");
 }
 
 .cell1 {

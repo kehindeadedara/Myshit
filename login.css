@@ -1,6 +1,7 @@
 .body {
   background-color: lightskyblue;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: small;
 }
 select {
   width: 150px;
@@ -79,6 +80,20 @@ a:active {
   cursor: pointer;
 }
 
+.cellimage1{
+  background: url("./img/mtns.jpg");
+}
+.cellimage2{
+  background: url("./img/field.jpg");
+}
+.cellimage3{
+  background: url("./img/beach.jpg");
+}
+.centerpre{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .cell1 {
   background-position: left top;
 }
