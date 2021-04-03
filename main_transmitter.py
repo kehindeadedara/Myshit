@@ -19,8 +19,9 @@ beta = 'OFF'
 omega = 'OFF'
 teleop = 'STOP'
 frequency = 30
-random_size = 500
+random_size = 100
 clock = 2
+message = 'Helloword'
 
 
 
@@ -32,9 +33,9 @@ def interrupt_handler(sig, frame):
 
 
 def main(argv) -> None:
-    global alpha, beta, omega, teleop, frequency, random_size, clock
+    global alpha, beta, omega, teleop, frequency, random_size, clock, message
     try:
-        opts, args = getopt.getopt(argv, "a:b:o:m:t:r:f:c:", ["alpha=", "beta=", "omega=", "message=, teleop=", "random=", "frequency=", "clock="])
+        opts, args = getopt.getopt(argv, "ha:b:o:m:t:r:f:c:", ["alpha=", "beta=", "omega=", "message=, teleop=", "random=", "frequency=", "clock="])
     except getopt.GetoptError as err:
         usage()
         print("stopping...")
@@ -55,7 +56,7 @@ def main(argv) -> None:
         elif opt in ('-t', '--teleop'):
             teleop = arg
         elif opt in ('-r', '--random'):
-            random_size = arg
+            random_size = int(arg)
         elif opt in ('-f', '--frequency'):
             frequency = arg
         elif opt in ('-c', '--clock'):
@@ -64,19 +65,16 @@ def main(argv) -> None:
     signal.signal(signal.SIGINT, interrupt_handler)
 
     #Start all transmitters subprocesses
-    if alpha == 'ON' or 'on':
-        rear_transmitter = subprocess.Popen('python3 Transmitter/rear_transmission.py -f {} -r {} -t {}'.format(frequency, random_size, clock),shell=True)
-        print('Starting Main LED....')
-    # if beta == 'ON' or 'on':
-    #     rear_led_matrix = subprocess.Popen('python3 Transmitter/front_ledmatrix.py -f {} -m {} -t {}'.format(frequency, message, clock), shell=True)
-    #     print('Starting front LED matrix....')
-    # if omega == 'ON' or 'on':
-    #     front_led_matrix = subprocess.Popen('python3 Transmitter/back_ledmatrix.py -f {} -m {} -t {}'.format(frequency, message, clock), shell=True)
-    #     print('Starting rear LED matrix....')
-    # if teleop == 'L' or 'LAUNCH' or 'START':
-    #     launch_ROS = subprocess.Popen('python3 RosLaunch.py', shell=True)
+    try:
+       front_led = subprocess.Popen('python3 Transmitter/front_ledmatrix.py -f {} -r {} -t {}'.format(frequency, random_size, clock), shell=True) if beta == 'ON' or 'on' else None
+       back_led = subprocess.Popen('python3 Transmitter/front_ledmatrix.py -f {} -r {} -t {}'.format(frequency, random_size, clock), shell=True) if omega == 'ON' or 'on'else None
+       time.sleep(7) #wait to SCL to spin up
+       #rear_led = subprocess.Popen('python3 Transmitter/rear_transmission.py -f {} -r {} -t {}'.format(frequency, random_size, clock),shell=True) if alpha == 'ON' or 'on' else None
+
+    finally:
+       print('Transmission complete!')
 
 
 if __name__ == "__main__":
-    main(sys.argv[:])
+    main(sys.argv[1:])
     #python3 main_transmitter.py -a ON -b ON -o ON -t L -r 1000 -f 60 -c 200

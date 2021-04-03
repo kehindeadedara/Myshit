@@ -5,14 +5,17 @@ import time
 import logging
 import getopt
 import random
-from VLC_CAR.Tools.main_matrix import LEDmatrix
-from VLC_CAR .Tools.car_config import Config
+import subprocess
+from main_matrix import LEDmatrix
+#from car_config import Config
 from tqdm import tqdm
 
-config_files = Config().dict
+#config_files = Config().dict
 
 try:
-    matrix = LEDmatrix(config_files['front_led_address'][0], config_files['front_led_address'][1])
+    #matrix = LEDmatrix(config_files['front_led_address'][0], config_files['front_led_address'][1])
+    matrix = LEDmatrix(0x70, 0x76)
+    matrix.transfer_bit(0)
 except:
     print('Something went wrong in the front led script!')
     sys.exit(0)
@@ -21,10 +24,10 @@ except:
 
 frequency = 30  # effectively a 30Hz transmission rate
 message = 'HelloWorld'
-times = 1
+times = 10
 # variables for perma state transmission
 state_flag = False
-
+random_size = 500
 
 
 
@@ -42,11 +45,18 @@ def create_transmission(bitstream, times_to_multiply):
 def transmit(transmission_bits):
     try:
         for bit in tqdm(transmission_bits, desc= 'back_transmitter:'):
-            matrix.transfer_bit(bit)
+            matrix.transfer_bit(int(bit))
             time.sleep(1/frequency)
     finally:
         GPIO.cleanup()
         sys.exit()
+
+def generate_random_bitstream(size):
+    bitstream = ""
+    for i in range(size):
+        bitstream += str(random.randint(0, 1))
+
+    return bitstream
 
 
 def usage():
@@ -69,7 +79,7 @@ def main(argv):
     if len(argv) == 1:
         print('Using default values of: Output Pin = Board 12, Frequency = 30 Hz')
     try:
-        opts, args = getopt.getopt(argv, "hr:f:t:", ["freq=", "message=", "times="])
+        opts, args = getopt.getopt(argv, "hf:r:t:", ["freq=", "random=", "times="])
     except getopt.GetoptError:
         usage()
         sys.exit(2)
@@ -80,7 +90,7 @@ def main(argv):
             sys.exit()
         elif opt in ('-f', '--freq'):
             frequency = int(arg)
-        elif opt in ('-m', '--message'):
+        elif opt in ('-r', '--random'):
             random_flag = True
             random_size = int(arg)
         elif opt in ('-t', '--times'):
@@ -91,11 +101,14 @@ def main(argv):
     try:
         random_bits = generate_random_bitstream(random_size)
         transmission = create_transmission(random_bits, times)
+        #subprocess.Popen('ls', shell=True, stdout=subprocess.PIPE)
+        #subprocess.Popen(['python3', 'Transmitter/blink.py'])
         transmit(transmission)
         print('transmission completed....')
     except:        
         print('No flags set, exiting')
         usage()
+        matrix.transfer_bit(0)
         sys.exit(0)
 
 

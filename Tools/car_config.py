@@ -4,7 +4,7 @@ class Config(object):
     def __init__(self):
         self.dict = {
             'frequency' : 30,
-            'front_led_address': ['0x71', '0x72'], # check i2cdetect -r -y 8 before intializing addresses
+            'front_led_address': ['0x70', '0x76'], # check i2cdetect -r -y 8 before intializing addresses
             'back_led_address' : ['0x73', '0x76'],
             'front_led_frequency': 30,
             'back_led_frquency' : 30,

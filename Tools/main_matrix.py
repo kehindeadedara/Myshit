@@ -6,7 +6,7 @@ from adafruit_ht16k33 import matrix
 
 i2c = busio.I2C(board.SCL, board.SDA)
 
-class LEDmatrix(matrix):
+class LEDmatrix():
     def __init__(self, address1, address2):
         self.left = matrix.Matrix8x8(i2c, address1)
         self.right = matrix.Matrix8x8(i2c, address2)
@@ -30,7 +30,7 @@ class LEDmatrix(matrix):
                     color.show()
 
     def transfer_bit(self, bit):
-        if bit == 0:
+        if bit == 1:
             self.high(self.left)
             self.high(self.right)
         else:
