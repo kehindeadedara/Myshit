@@ -67,14 +67,14 @@ def main(argv) -> None:
     if alpha == 'ON' or 'on':
         rear_transmitter = subprocess.Popen('python3 Transmitter/rear_transmission.py -f {} -r {} -t {}'.format(frequency, random_size, clock),shell=True)
         print('Starting Main LED....')
-    if beta == 'ON' or 'on':
-        rear_led_matrix = subprocess.Popen('python3 Transmitter/front_ledmatrix.py -f {} -m {} -t {}'.format(frequency, message, clock), shell=True)
-        print('Starting front LED matrix....')
-    if omega == 'ON' or 'on':
-        front_led_matrix = subprocess.Popen('python3 Transmitter/back_ledmatrix.py -f {} -m {} -t {}'.format(frequency, message, clock), shell=True)
-        print('Starting rear LED matrix....')
-    if teleop == 'L' or 'LAUNCH' or 'START':
-        launch_ROS = subprocess.Popen('python3 RosLaunch.py', shell=True)
+    # if beta == 'ON' or 'on':
+    #     rear_led_matrix = subprocess.Popen('python3 Transmitter/front_ledmatrix.py -f {} -m {} -t {}'.format(frequency, message, clock), shell=True)
+    #     print('Starting front LED matrix....')
+    # if omega == 'ON' or 'on':
+    #     front_led_matrix = subprocess.Popen('python3 Transmitter/back_ledmatrix.py -f {} -m {} -t {}'.format(frequency, message, clock), shell=True)
+    #     print('Starting rear LED matrix....')
+    # if teleop == 'L' or 'LAUNCH' or 'START':
+    #     launch_ROS = subprocess.Popen('python3 RosLaunch.py', shell=True)
 
 
 if __name__ == "__main__":
