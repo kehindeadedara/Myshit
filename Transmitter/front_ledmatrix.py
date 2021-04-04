@@ -7,14 +7,13 @@ import getopt
 import random
 import subprocess
 from main_matrix import LEDmatrix
-#from car_config import Config
-from tqdm import tqdm
+from car_config import Config
+from tqdm.auto import tqdm
 
-#config_files = Config().dict
+config_files = Config().dict
 
 try:
-    #matrix = LEDmatrix(config_files['front_led_address'][0], config_files['front_led_address'][1])
-    matrix = LEDmatrix(0x70, 0x76)
+    matrix = LEDmatrix(config_files['front_led_address'][0], config_files['front_led_address'][1])
     matrix.transfer_bit(0)
 except:
     print('Something went wrong in the front led script!')
@@ -25,7 +24,6 @@ except:
 frequency = 30  # effectively a 30Hz transmission rate
 message = 'HelloWorld'
 times = 10
-# variables for perma state transmission
 state_flag = False
 random_size = 500
 
@@ -33,7 +31,6 @@ random_size = 500
 
 def interrupt_handler(sig, frame):
     print("You've pressed Ctrl+C!")
-    GPIO.cleanup()
     sys.stdout.flush()
     sys.exit(0)
 
@@ -44,11 +41,10 @@ def create_transmission(bitstream, times_to_multiply):
 
 def transmit(transmission_bits):
     try:
-        for bit in tqdm(transmission_bits, desc= 'back_transmitter:'):
+        for bit in tqdm(transmission_bits, desc= 'front_transmitter:', position = 2, leave = True, ascii = True):
             matrix.transfer_bit(int(bit))
             time.sleep(1/frequency)
     finally:
-        GPIO.cleanup()
         sys.exit()
 
 def generate_random_bitstream(size):
@@ -75,7 +71,7 @@ def generate_random_bitstream(size):
 
 
 def main(argv):
-    global output_pin, frequency, state_flag, random_flag, random_size, times
+    global frequency, state_flag, random_size, times
     if len(argv) == 1:
         print('Using default values of: Output Pin = Board 12, Frequency = 30 Hz')
     try:
@@ -98,14 +94,12 @@ def main(argv):
     
     signal.signal(signal.SIGINT, interrupt_handler)
 
-    try:
+    try:  
         random_bits = generate_random_bitstream(random_size)
         transmission = create_transmission(random_bits, times)
-        #subprocess.Popen('ls', shell=True, stdout=subprocess.PIPE)
-        #subprocess.Popen(['python3', 'Transmitter/blink.py'])
         transmit(transmission)
         print('transmission completed....')
-    except:        
+    except:       
         print('No flags set, exiting')
         usage()
         matrix.transfer_bit(0)

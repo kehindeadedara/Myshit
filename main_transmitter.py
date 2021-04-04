@@ -9,9 +9,6 @@ def usage():
     print('-r or --runtime : set the runtime or iteration ')
     print('-f or --frequency : set LED freuency')
 
-
-
-
 message = "HelloJarred"
 
 alpha = 'OFF'
@@ -22,8 +19,6 @@ frequency = 30
 random_size = 100
 clock = 2
 message = 'Helloword'
-
-
 
 def interrupt_handler(sig, frame):
     print("You've pressed Ctrl+C!")
@@ -67,14 +62,12 @@ def main(argv) -> None:
     #Start all transmitters subprocesses
     try:
        front_led = subprocess.Popen('python3 Transmitter/front_ledmatrix.py -f {} -r {} -t {}'.format(frequency, random_size, clock), shell=True) if beta == 'ON' or 'on' else None
-       back_led = subprocess.Popen('python3 Transmitter/front_ledmatrix.py -f {} -r {} -t {}'.format(frequency, random_size, clock), shell=True) if omega == 'ON' or 'on'else None
-       time.sleep(7) #wait to SCL to spin up
-       #rear_led = subprocess.Popen('python3 Transmitter/rear_transmission.py -f {} -r {} -t {}'.format(frequency, random_size, clock),shell=True) if alpha == 'ON' or 'on' else None
-
+       back_led = subprocess.Popen('python3 Transmitter/back_ledmatrix.py -f {} -r {} -t {}'.format(frequency, random_size, clock), shell=True) if omega == 'ON' or 'on'else None
+       time.sleep(7)
+       rear_led = subprocess.Popen('python3 Transmitter/rear_transmission.py -f {} -r {} -t {}'.format(frequency, random_size, clock),shell=True) if alpha == 'ON' or 'on' else None
     finally:
-       print('Transmission complete!')
+        print('Transmitting....')
 
 
 if __name__ == "__main__":
     main(sys.argv[1:])
-    #python3 main_transmitter.py -a ON -b ON -o ON -t L -r 1000 -f 60 -c 200

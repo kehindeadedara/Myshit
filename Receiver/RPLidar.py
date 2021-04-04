@@ -1,18 +1,17 @@
-
 import os,sys, signal
 from math import cos, sin, pi, floor
 from adafruit_rplidar import RPLidar
 import time
 from time import ctime, sleep
+from car_config import Config
+import logging
 
+config_file = Config().dict
  
 # Setup the RPLidar
-PORT_NAME = '/dev/ttyUSB0'
-lidar = RPLidar(None, PORT_NAME, baudrate = 256000)
- 
-# used to scale data to fit on the screen
+PORT_NAME = config_file['lidar_port']
 time = ctime()
-cur_file = open('RXDATA/' + time + ".txt", "w+")
+#cur_file = open('RXDATA/' + time + ".txt", "w+")
 
 
 def interrupt_handler(sig, frame):
@@ -21,22 +20,24 @@ def interrupt_handler(sig, frame):
     sys.exit(0)
 #change to a Log file!
 
-signal.signal(signal.SIGINT, interrupt_handler)
-def main(argv):
+
+def main():
+    signal.signal(signal.SIGINT, interrupt_handler)
+    lidar = RPLidar(None, PORT_NAME, baudrate = 256000)
+    logging.basicConfig(filename="Datalog/Receiver/lidar_data_{}.log".format(time), level = logging.INFO)
     max_distance = 0
     try:
-        print(lidar.info)
+        logging.info("Starting scanning>>>")
+        logging.info(lidar.info)
         sleep(10)
         for scan in lidar.iter_scans():
             for (_, angle, distance) in scan:
                 data = {"angle":angle, "distance":distance, "time": ctime()}
-                cur_file.write(str(data) + '\n')
-                print("scanning..")
+                logging.info(str(data))
     except KeyboardInterrupt:
-        print('Stoping.....')
+        logging.info("Stop scanning")
         sys.exit(0)
     
-    cur_file.close()
     lidar.stop()
     lidar.stop_motor()
     lidar.disconnect()
@@ -44,4 +45,3 @@ def main(argv):
 
 if __name__ == "__main__":
     main()
-

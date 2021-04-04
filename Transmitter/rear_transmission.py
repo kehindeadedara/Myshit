@@ -1,12 +1,11 @@
 from datetime import *
-from tqdm import tqdm
+from tqdm.auto import tqdm
 import Jetson.GPIO as GPIO
 import signal
 import sys
 import time
-import logging
-import getopt
-import random
+import logging, getopt, random
+from time import ctime
 
 output_pin = 12  # Board Pin 12
 frequency = 30  # effectively a 30Hz transmission rate
@@ -39,7 +38,7 @@ def transmit(transmission_bits):
 
         # set pin as an output pin with initial state low
         GPIO.setup(output_pin, GPIO.OUT, initial=GPIO.LOW)
-        for bit in tqdm(transmission_bits, desc= 'Main Rear LED:'):
+        for bit in tqdm(transmission_bits, desc= 'Main Rear LED:', position = 0, leave = True, ascii = True):
             GPIO.output(output_pin, int(bit))
             counter += 1
             logging.info("Transmitted: {0}".format(bit))
