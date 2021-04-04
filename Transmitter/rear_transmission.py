@@ -10,7 +10,7 @@ from time import ctime
 output_pin = 12  # Board Pin 12
 frequency = 30  # effectively a 30Hz transmission rate
 # variables for random bit transmission
-random_flag = False
+random_flag = True
 random_size = 500
 times = 1
 # variables for perma state transmission

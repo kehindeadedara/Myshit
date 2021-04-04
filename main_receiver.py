@@ -8,6 +8,12 @@ zed_cam = None
 
 threshold = 19000
 
+
+def interrupt_handler(sig, frame):
+    print("You've pressed Ctrl+C!")
+    sys.stdout.flush()
+    sys.exit(0)
+
 def usage():
     print('-z or --zed : turn on zed camera ')
     print('-l or --lidar : turn on rplidar ')
@@ -16,7 +22,8 @@ def usage():
 
 
 def main(argv):
-    
+    signal.signal(signal.SIGINT, interrupt_handler)
+
     global photodiode, lidar, zed_cam, zed_imu
     try:
         opts, args = getopt.getopt(argv, "hz:l:i:p:t:", ["zed=", "lidar=", "imu=", "photo=", "thresh="])
