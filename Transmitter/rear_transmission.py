@@ -38,7 +38,7 @@ def transmit(transmission_bits):
 
         # set pin as an output pin with initial state low
         GPIO.setup(output_pin, GPIO.OUT, initial=GPIO.LOW)
-        for bit in tqdm(transmission_bits, desc= 'Main Rear LED:', position = 0, leave = True, ascii = True):
+        for bit in tqdm(transmission_bits, desc= 'Main Rear LED transmitting at {}hz:'.format(frequency), position = 0, leave = True, ascii = True):
             GPIO.output(output_pin, int(bit))
             counter += 1
             logging.info("Transmitted: {0}".format(bit))

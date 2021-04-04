@@ -41,7 +41,7 @@ def create_transmission(bitstream, times_to_multiply):
 
 def transmit(transmission_bits):
     try:
-        for bit in tqdm(transmission_bits, desc= 'front_transmitter:', position = 2, leave = True, ascii = True):
+        for bit in tqdm(transmission_bits, desc= 'front_led matrix transmitting at {}hz:'.format(frequency), position = 2, leave = True, ascii = True):
             matrix.transfer_bit(int(bit))
             time.sleep(1/frequency)
     finally:
