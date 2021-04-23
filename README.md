@@ -1,2 +1,0 @@
-# GPA
-Graphical Password Authenticator
