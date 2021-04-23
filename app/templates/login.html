@@ -1,0 +1,411 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<title>Bootstrap Simple Registration Form</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.0/brython.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.9.0/brython_stdlib.min.js">
+</script>
+
+<style>
+	body {
+		color: #fff;
+		background: #1f3317d2;
+		font-family: 'Roboto', sans-serif;
+	}
+    .form-control{
+		height: 40px;
+		box-shadow: none;
+		color: #969fa4;
+	}
+	.form-control:focus{
+		border-color: #364e2cd2;
+	}
+    .form-control, .btn{        
+        border-radius: 3px;
+    }
+	.signup-form{
+		width: 400px;
+		margin: 0 auto;
+		padding: 30px 0;
+	}
+	.signup-form h2{
+		color: #636363;
+        margin: 0 0 15px;
+		position: relative;
+		text-align: center;
+    }
+	.signup-form h2:before, .signup-form h2:after{
+		content: "";
+		height: 2px;
+		width: 30%;
+		background: #d4d4d4;
+		position: absolute;
+		top: 50%;
+		z-index: 2;
+	}	
+	.signup-form h2:before{
+		left: 0;
+	}
+	.signup-form h2:after{
+		right: 0;
+	}
+    .signup-form .hint-text{
+		color: #999;
+		margin-bottom: 30px;
+		text-align: center;
+	}
+    .signup-form form{
+		color: #999;
+		border-radius: 3px;
+    	margin-bottom: 15px;
+        background: #f2f3f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        /* padding: 30px; */
+    }
+	.signup-form .form-group{
+		margin-bottom: 20px;
+	}
+	.signup-form input[type="checkbox"]{
+		margin-top: 3px;
+	}
+	.signup-form .btn{        
+        font-size: 16px;
+        font-weight: bold;		
+		min-width: 140px;
+        outline: none !important;
+    }
+	.signup-form .row div:first-child{
+		padding-right: 10px;
+	}
+	.signup-form .row div:last-child{
+		padding-left: 10px;
+	}    	
+    .signup-form a{
+		color: #fff;
+		text-decoration: underline;
+	}
+    .signup-form a:hover{
+		text-decoration: none;
+	}
+	.signup-form form a{
+		color: #5cb85c;
+		text-decoration: none;
+	}	
+	.signup-form form a:hover{
+		text-decoration: underline;
+	}  
+
+.fixedContainer {
+  position: fixed;
+	}
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding-left: 25px;
+  padding: 10px;
+}
+
+.bozcenter {
+  margin: auto;
+  width: 50%;
+  padding-left: 10px;
+  border: 3px solid blue;
+}
+.test{
+    margin: auto;
+    height:100px;
+    width:100px;
+    border: none;
+    outline: none;
+
+}
+.container{
+    padding-left: 2%;
+}
+
+.butleft{
+    padding-right: 50%;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.center { text-align: center; }
+.right { text-align: right; }
+</style>
+</head>
+<body onload="brython()">
+<div class="signup-form">
+    <form action="" method="post">
+		<h2>User Login</h2>
+		<p class="hint-text">Login to your account!</p>
+        <div class="form-group">
+        	<input type="username" class="form-control" name="username" placeholder="username" required="required">
+        </div>    
+		<div aria-label="Basic example" class="">
+            <button type="button" class="btn btn-outline-success btn btn-primary btn-sm" id = "tree">Tree</button>
+            <button type="button" class="btn btn-outline-success btn btn-primary btn-sm" id =  "mountain">Mountain</button>
+            <button type="button" class="btn btn-outline-success btn btn-primary btn-sm" id ="apple">Apple</button>
+            <button type="button" class="btn btn-outline-success btn btn-primary btn-sm" id = "chips">Chips</button>
+            <button type="button" class="btn btn-outline-success btn btn-primary btn-sm" id = "banana">Banana</button>
+            <button type="button" class="btn btn-outline-success btn btn-primary btn-sm" id = "lamp">Lamp</button>
+          </div>
+
+          <div class="container">
+              <div class="col">
+               <button id="button-a" class="test"><div id="a" class="test"></div></button>
+               <button id="button-b" class="test"><div id="b" class="test"></div></button>
+               <button id="button-c" class="test"><div id="c" class="test"></div></button>
+              </div>
+              <!-- <div></div> -->
+              <div class="col">
+               <button id="button-d" class="test"><div id="d" class="test"></div></button>
+               <button id="button-e" class="test"><div id="e" class="test"></div></button>
+               <button id="button-f" class="test"><div id="f" class="test"></div></button>
+               </div>
+
+               <div class="col">
+                <button id="button-g" class="test"><div id="g" class="test"></div></button>
+                <button id="button-h" class="test"><div id="h" class="test"></div></button>
+                <button id="button-i" class="test"><div id="i" class="test"></div></button>
+                </div>
+
+            </div>
+		<div class="form-group">
+			<label class="checkbox-inline"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+		</div>
+		<div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Login In Now</button>
+        </div>
+	</form>
+	</div>
+
+	<script type = "text/python" id= "tree">
+		from browser import document, html, console, bind, ajax
+		tree_list = ["static/tree/tree_01_01.png","static/tree/tree_01_02.png","static/whitebox.png","static/tree/tree_02_01.png","static/tree/tree_02_02.png", "static/tree/tree_02_03.png","static/tree/tree_03_01.png","static/tree/tree_03_02.png","static/tree/tree_03_03.png"]
+		mountain_list = ["static/mount/mount_01_01.png","static/mount/mount_01_02.png","static/whitebox.png","static/mount/mount_02_01.png","static/mount/mount_02_02.png", "static/mount/mount_02_03.png","static/mount/mount_03_01.png","static/mount/mount_03_02.png","static/mount/mount_03_03.png"]
+		apple_list = ["static/apple/apple_01_01.png","static/apple/apple_01_02.png","static/whitebox.png","static/apple/apple_02_01.png","static/apple/apple_02_02.png", "static/apple/apple_02_03.png","static/apple/apple_03_01.png","static/apple/apple_03_02.png","static/apple/apple_03_03.png"]
+		chips_list = ["static/chips/chips_01_01.png","static/chips/chips_01_02.png","static/whitebox.png","static/chips/chips_02_01.png","static/chips/chips_02_02.png", "static/chips/chips_02_03.png","static/chips/chips_03_01.png","static/chips/chips_03_02.png","static/chips/chips_03_03.png"]
+		banana_list = ["static/banana/banana_01_01.png","static/banana/banana_01_02.png","static/whitebox.png","static/banana/banana_02_01.png","static/banana/banana_02_02.png", "static/banana/banana_02_03.png","static/banana/banana_03_01.png","static/banana/banana_03_02.png","static/banana/banana_03_03.png"]
+		lamp_list = ["static/lamp/lamp_01_01.png","static/lamp/lamp_01_02.png","static/whitebox.png","static/lamp/lamp_02_01.png","static/lamp/lamp_02_02.png", "static/lamp/lamp_02_03.png","static/lamp/lamp_03_01.png","static/lamp/lamp_03_02.png","static/lamp/lamp_03_03.png"]
+
+
+		selected_image = {}
+
+		letters = ["a", "b", "c","d", "e", "f", "g", "h", "i"]
+		state1 = 0
+		result = ""
+
+		def populate_images(image):
+			global state1
+			#if state1 == 0:
+			for i in range(9):
+				document["{}".format(letters[i])].clear()
+				document["{}".format(letters[i])] <= html.IMG(src=str(image[i]), height=100)
+			#else:
+				#for i in range(9):
+				   #document["{}".format(letters[i])].clear()
+				   #state1 = 0
+		
+		tree_dict = {'a' : "static/tree/tree_01_01.png",
+		'b' : "static/tree/tree_01_02.png",
+		'c' : "static/whitebox.png",
+		'd' : "static/tree/tree_02_01.png",
+		'e' : "static/tree/tree_02_02.png",
+		'f' : "static/tree/tree_02_03.png",
+		'g' : "static/tree/tree_03_01.png",
+		'h' : "static/tree/tree_03_02.png",
+		'i' : "static/tree/tree_03_03.png"}
+
+		mountain_dict = {'a' : "static/mount/mount_01_01.png",
+		'b' : "static/mount/mount_01_02.png",
+		'c' : "static/whitebox.png",
+		'd' : "static/mount/mount_02_01.png",
+		'e' : "static/mount/mount_02_02.png",
+		'f' : "static/mount/mount_02_03.png",
+		'g' : "static/mount/mount_03_01.png",
+		'h' : "static/mount/mount_03_02.png",
+		'i' : "static/mount/mount_03_03.png"}
+
+		apple_dict = {'a' : "static/apple/apple_01_01.png",
+		'b' : "static/apple/apple_01_02.png",
+		'c' : "static/whitebox.png",
+		'd' : "static/apple/apple_02_01.png",
+		'e' : "static/apple/apple_02_02.png",
+		'f' : "static/apple/apple_02_03.png",
+		'g' : "static/apple/apple_03_01.png",
+		'h' : "static/apple/apple_03_02.png",
+		'i' : "static/apple/apple_03_03.png"}
+
+		chips_dict = {'a' : "static/chips/chips_01_01.png",
+		'b' : "static/chips/chips_01_02.png",
+		'c' : "static/whitebox.png",
+		'd' : "static/chips/chips_02_01.png",
+		'e' : "static/chips/chips_02_02.png",
+		'f' : "static/chips/chips_02_03.png",
+		'g' : "static/chips/chips_03_01.png",
+		'h' : "static/chips/chips_03_02.png",
+		'i' : "static/chips/chips_03_03.png"}
+
+		banana_dict = {'a' : "static/banana/banana_01_01.png",
+		'b' : "static/banana/banana_01_02.png",
+		'c' : "static/whitebox.png",
+		'd' : "static/banana/banana_02_01.png",
+		'e' : "static/banana/banana_02_02.png",
+		'f' : "static/banana/banana_02_03.png",
+		'g' : "static/banana/banana_03_01.png",
+		'h' : "static/banana/banana_03_02.png",
+		'i' : "static/banana/banana_03_03.png"}
+
+		lamp_dict = {'a' : "static/lamp/lamp_01_01.png",
+		'b' : "static/lamp/lamp_01_02.png",
+		'c' : "static/whitebox.png",
+		'd' : "static/lamp/lamp_02_01.png",
+		'e' : "static/lamp/lamp_02_02.png",
+		'f' : "static/lamp/lamp_02_03.png",
+		'g' : "static/lamp/lamp_03_01.png",
+		'h' : "static/lamp/lamp_03_02.png",
+		'i' : "static/lamp/lamp_03_03.png"}
+
+
+
+		@bind(document["tree"], "click")
+		def click(ev):
+			global selected_image, result, tree_list
+			result = ""
+			result += "tree"
+			selected_image = tree_dict
+			populate_images(tree_list)
+
+
+		@bind(document["mountain"], "click")
+		def click(ev):
+			global selected_image, result, mountain_list
+			result = ""
+			result += "mountain"
+			selected_image = mountain_dict
+			populate_images(mountain_list)
+
+		@bind(document["apple"], "click")
+		def click(ev):
+			global selected_image,result, apple_list
+			result = ""
+			result += "apple"
+			selected_image = apple_dict
+			populate_images(apple_list)
+
+		##################################################################
+		@bind(document["chips"], "click")
+		def click(ev):
+			global selected_image,result, chips_list
+			result = ""
+			result += "chips"
+			selected_image = chips_dict
+			populate_images(chips_list)
+
+		@bind(document["banana"], "click")
+		def click(ev):
+			global selected_image,result, banana_list
+			result = ""
+			result += "banana"
+			selected_image = banana_dict
+			populate_images(banana_list)
+
+		@bind(document["lamp"], "click")
+		def click(ev):
+			global selected_image,result, lamp_list
+			result = ""
+			result += "lamp"
+			selected_image = lamp_dict
+			populate_images(lamp_list)
+		
+
+
+		letter = "abcdefghi"
+
+		def change_image(k, image_dict):
+			k = str(k)
+			global letter, result
+			result += k
+			
+			for i in letter:
+				if image_dict[i] == "static/whitebox.png":
+					temp = image_dict[k]
+
+					image_dict[i] = temp
+					image_dict[k] = "static/whitebox.png"
+
+					document[k].clear()
+					#document[k] <= html.IMG(src= image_dict[i], height=100)
+
+					document[i].clear()
+					document[i] <= html.IMG(src= temp, height=100)
+
+			
+
+
+		def change_grid_image_a(event):
+			change_image("a", selected_image)
+		def change_grid_image_b(event):
+			change_image("b", selected_image)
+		def change_grid_image_c(event):
+			change_image("c", selected_image)
+		def change_grid_image_d(event):
+			change_image("d", selected_image)
+		def change_grid_image_e(event):
+			change_image("e", selected_image)
+		def change_grid_image_f(event):
+			change_image("f", selected_image)
+		def change_grid_image_g(event):
+			change_image("g", selected_image)
+		def change_grid_image_h(event):
+			change_image("h", selected_image)
+		def change_grid_image_i(event):
+			change_image("i", selected_image)
+
+
+		document["a"].bind("click", change_grid_image_a)
+		document["b"].bind("click", change_grid_image_b)
+		document["c"].bind("click", change_grid_image_c)
+		document["d"].bind("click", change_grid_image_d)
+		document["e"].bind("click", change_grid_image_e)
+		document["f"].bind("click", change_grid_image_f)
+		document["g"].bind("click", change_grid_image_g)
+		document["h"].bind("click", change_grid_image_h)
+		document["i"].bind("click", change_grid_image_i)
+
+
+
+					
+		
+
+
+	</script>
+    <!-- </form> -->
+
+</div>
+</body>
+</html>
+
+{% endblock %}
